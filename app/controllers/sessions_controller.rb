@@ -27,6 +27,13 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  def create_facebook
+    user = User.from_omniauth(env["omniauth.auth"])
+    log_in user
+    redirect_back_or user
+  end
+
+
 end
 
 
